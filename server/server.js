@@ -1,8 +1,10 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-import mongoose from "mongoose";
+import mongoose, { skipMiddlewareFunction } from "mongoose";
 import { DATABASE } from "./config.js";
+import authRoutes from "./routes/auth.js";
+
 
 const app = express();
 
@@ -17,10 +19,10 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
 
-app.get('/api',(req, res) =>{
-    res.json({
-        data:"hello from nodejs api",
-    });
-});
+// routes middleware
+
+app.use("/api", authRoutes)
+
+
 
 app.listen(8000, () => console.log("Server running on port 8"));
