@@ -1,6 +1,11 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './screens/Home';
+import Login from './screens/Login';
+import Register  from './screens/Register';
 
 
-function App() {
+const App = () => {
   return (
     <div >
       <h1>Hello world from react</h1>
